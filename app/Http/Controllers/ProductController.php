@@ -6,6 +6,11 @@ use App\Product;
 
 class ProductController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth')->except(['home']);
+    }
+
     public function home()
     {
     	$products = Product::all()->sortBy("price");
@@ -15,10 +20,8 @@ class ProductController extends Controller
 
     public function index()
     {
-        if (auth()->check()) {
-        	$products = Product::all()->sortBy("price");
+    	$products = Product::all()->sortBy("price");
 
-        	return view('products.products', compact('products'));
-        }
+    	return view('products.products', compact('products'));
     }
 }
