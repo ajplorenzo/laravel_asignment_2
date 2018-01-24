@@ -19,8 +19,8 @@ Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
 Route::get('/', 'ProductController@home');
 
-Route::post('/add/{$product}', 'WishlistController@store');
+Route::post('/wishlist/add', 'WishlistController@store');
 
-/*Route::get('profile', function () {
-    
-})->middleware('auth');*/
+Route::get('/wishlist', 'WishlistController@index');
+
+Route::delete('/wishlist/delete/{$id)', 'WishlistController@delete');

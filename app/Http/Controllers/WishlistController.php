@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Product;
+use App\WishlistProduct;
+use Illuminate\Support\Facades\Input;
 
 class WishlistController extends Controller
 {
@@ -13,13 +16,40 @@ class WishlistController extends Controller
 
     public function store()
 	{
-		dd($product);
+		$user_id = auth()->user()->id;
+		$product_id = Input::get('product_id');
 
-		Whishlist::create([
-			'user_id' => auth()->user()->id,
-			'product_id' => request(['product'])
+		$count = WishlistProduct::where('product_id', '=', $product_id)->where('user_id','=',$user_id)->count();
+
+		if($count){
+
+         return redirect()->route('index')->with('error','The book already in your cart.');
+       	}
+       	
+		WishlistProduct::create([
+			'user_id' => $user_id,
+			'product_id' => $product_id
 		]);	
 		
-		return view('products.index');
+		$wishlist_list = WishlistProduct::all()->where('user_id', '=', $user_id);
+
+		return view('products.wishlist', compact('wishlist'));
+	}
+
+	public function index()
+	{
+		$user_id = auth()->user()->id;
+		$wishlist_list = WishlistProduct::all()->where('user_id', '=', $user_id);
+
+		return view('products.wishlist', compact('wishlist'));
+	}
+
+	public function delete($id) 
+	{
+		WishlistProduct::find($id)->delete();
+		$user_id = auth()->user()->id;
+		$wishlist_list = WishlistProduct::all()->where('user_id', '=', $user_id)->get();
+
+		return view('products.wishlist', compact('wishlist'));
 	}
 }

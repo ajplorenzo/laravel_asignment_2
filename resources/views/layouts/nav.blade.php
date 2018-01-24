@@ -6,7 +6,7 @@
         <h4 class="text-white">Menu</h4>
         <ul class="list-unstyled">
           @if(auth()->check())
-          <li><a href="#" class="text-white">My Wishlist</a></li>
+          <li><a href="/wishlist" class="text-white">My Wishlist</a></li>
           <li><a href="{{ route('logout') }}" class="text-white">Logout</a></li>
           @else
           <li><a href="/home" class="text-white">Login</a></li>
