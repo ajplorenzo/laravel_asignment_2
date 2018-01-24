@@ -15,8 +15,10 @@ class ProductController extends Controller
 
     public function index()
     {
-    	$products = Product::all()->sortBy("price");
+        if (auth()->check()) {
+        	$products = Product::all()->sortBy("price");
 
-    	return view('products.products', compact('products'));
+        	return view('products.products', compact('products'));
+        }
     }
 }
