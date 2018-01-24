@@ -27,7 +27,7 @@
                 €{{$product->price}}
               </p>
               <form method="POST" action="/add/{{$product->id}}">
-                <button type="submit" class="btn btn-success" style="width: 100%;">Success</button>
+                <button type="submit" class="btn btn-success" style="width: 100%;">Add to your wishlist</button>
               </form>
           </div>
           @endforeach
