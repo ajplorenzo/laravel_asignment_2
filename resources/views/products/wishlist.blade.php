@@ -5,12 +5,9 @@
       <div class="container">
 
         <div class="row">
-          @foreach ($whislist as $wishlist_product)
+          @foreach ($wishlist as $wishlist_product)
           <div class="card">
-              <div>
-                <img src="images/{{$wishlist_product->Product->image}}" alt="Card image cap" style = "padding: 2rem;">
-              </div>
-              <p class="card-text">{{$product->name}}</p>
+              <p class="card-text">{{$wishlist_product->Product->name}}</p>
               <ul>
                 <li>{{$wishlist_product->Product->colour}}</li>
                 <li>{{$wishlist_product->Product->type}}</li>

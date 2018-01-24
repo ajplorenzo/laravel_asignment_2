@@ -25,13 +25,13 @@ class WishlistController extends Controller
 
          return redirect()->route('index')->with('error','The book already in your cart.');
        	}
-       	
+
 		WishlistProduct::create([
 			'user_id' => $user_id,
 			'product_id' => $product_id
 		]);	
 		
-		$wishlist_list = WishlistProduct::all()->where('user_id', '=', $user_id);
+		$wishlist = WishlistProduct::all()->where('user_id', '=', $user_id);
 
 		return view('products.wishlist', compact('wishlist'));
 	}
@@ -39,7 +39,7 @@ class WishlistController extends Controller
 	public function index()
 	{
 		$user_id = auth()->user()->id;
-		$wishlist_list = WishlistProduct::all()->where('user_id', '=', $user_id);
+		$wishlist = WishlistProduct::all()->where('user_id', '=', $user_id);
 
 		return view('products.wishlist', compact('wishlist'));
 	}
@@ -48,7 +48,7 @@ class WishlistController extends Controller
 	{
 		WishlistProduct::find($id)->delete();
 		$user_id = auth()->user()->id;
-		$wishlist_list = WishlistProduct::all()->where('user_id', '=', $user_id)->get();
+		$wishlist = WishlistProduct::all()->where('user_id', '=', $user_id)->get();
 
 		return view('products.wishlist', compact('wishlist'));
 	}
