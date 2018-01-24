@@ -18,6 +18,8 @@ class CreateWishlistProductsTable extends Migration
             $table->integer('product_id');
             $table->integer('user_id');
             $table->timestamps();
+            $table->foreign('product_id')->references('id')->on('products');
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

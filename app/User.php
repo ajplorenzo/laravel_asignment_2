@@ -27,8 +27,8 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function whislist()
+    public function wishlist()
     {
-        return $this->hasOne('App\WishlistProduct');
+        return $this->hasOne(WishlistProduct::class);
     }
 }

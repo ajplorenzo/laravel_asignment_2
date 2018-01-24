@@ -16,39 +16,37 @@ class WishlistController extends Controller
 
     public function store()
 	{
-		$user_id = auth()->user()->id;
-		$product_id = Input::get('product_id');
-
-		$count = WishlistProduct::where('product_id', '=', $product_id)->where('user_id','=',$user_id)->count();
+		$user = auth()->user();
+		$product = $user->wishlist;
+		
+		$count = WishlistProduct::where('product_id', '=', $product->product_id)->where('user_id','=',$user->id)->count();
 
 		if($count){
-
-         return redirect()->route('index')->with('error','The book already in your cart.');
+			return back();
        	}
 
 		WishlistProduct::create([
-			'user_id' => $user_id,
-			'product_id' => $product_id
+			'user_id' => $user->id,
+			'product_id' => $product->id
 		]);	
 		
-		$wishlist = WishlistProduct::all()->where('user_id', '=', $user_id);
-
+		$wishlist = WishlistProduct::where('user_id', '=', $user->id);
+dd($wishlist);
 		return view('products.wishlist', compact('wishlist'));
 	}
 
 	public function index()
 	{
-		$user_id = auth()->user()->id;
-		$wishlist = WishlistProduct::all()->where('user_id', '=', $user_id);
-
+		$user = auth()->user();
+		$wishlist = WishlistProduct::where('user_id', '=', $user->id)->get();
 		return view('products.wishlist', compact('wishlist'));
 	}
 
 	public function delete($id) 
 	{
 		WishlistProduct::find($id)->delete();
-		$user_id = auth()->user()->id;
-		$wishlist = WishlistProduct::all()->where('user_id', '=', $user_id)->get();
+		$user = auth()->user();
+		$wishlist = WishlistProduct::where('user_id', '=', $user->id)->get();
 
 		return view('products.wishlist', compact('wishlist'));
 	}

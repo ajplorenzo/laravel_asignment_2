@@ -6,6 +6,6 @@ class Product extends Model
 {
 	public function wishlist()
 	{
-		return $this->belongsTo(App\WishlistProduct::class);
+		return $this->belongsTo(WishlistProduct::class);
 	}
 }

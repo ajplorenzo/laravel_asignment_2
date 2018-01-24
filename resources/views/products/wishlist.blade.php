@@ -3,23 +3,23 @@
 @section('content')
     <div class="album text-muted">
       <div class="container">
-
         <div class="row">
-          @foreach ($wishlist as $wishlist_product)
+
+          @foreach ($wishlist as $product => $product_id)
           <div class="card">
-              <p class="card-text">{{$wishlist_product->Product->name}}</p>
+              <p class="card-text">{{$product->name}}</p>
               <ul>
-                <li>{{$wishlist_product->Product->colour}}</li>
-                <li>{{$wishlist_product->Product->type}}</li>
-                <li>{{$wishlist_product->Product->brand}}</li>
+                <li>{{$product->colour}}</li>
+                <li>{{$product->type}}</li>
+                <li>{{$product->brand}}</li>
               </ul>
               <p style="text-align: right; color: red; font-size: 3rem; ">
-                €{{$wishlist_product->Product->price}}
+                €{{$product->price}}
               </p>
               @if(auth()->check())
-                <form name="delete_from_wishlist" method="DELETE" action="/wishlist/delete/{{ $wishlist_product->Product->id }}">
+                <form name="delete_from_wishlist" method="DELETE" action="/wishlist/delete/{{ $product->id }}">
                   {{ csrf_field() }}
-                  <input type="hidden" name="product_id" value="{{$wishlist_product->Product->id}}" />
+                  <input type="hidden" name="product_id" value="{{$product->id}}" />
                   <button type="submit" class="btn btn-danger" style="width: 100%;">Borrar</button>
                 </form>
               @endif
