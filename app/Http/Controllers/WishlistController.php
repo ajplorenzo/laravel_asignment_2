@@ -11,14 +11,15 @@ class WishlistController extends Controller
 		$this->middleware('auth');
 	}
 
-    public function store(Product $product)
+    public function store()
 	{
 		dd($product);
 
 		Whishlist::create([
 			'user_id' => auth()->user()->id,
-			'product_id' => request('id')
+			'product_id' => request(['product'])
 		]);	
-		return back();
+		
+		return view('products.index');
 	}
 }

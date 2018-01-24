@@ -27,7 +27,7 @@
                 €{{$product->price}}
               </p>
               @if(auth()->check())
-                <form method="POST" action="add/{{$product->id}}">
+                <form method="POST" action="{{route('/add/$product->id')}}">
                   {{ csrf_field() }}
                   <button type="submit" class="btn btn-success" style="width: 100%;">Add to your wishlist</button>
                 </form>

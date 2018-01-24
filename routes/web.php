@@ -19,7 +19,7 @@ Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
 Route::get('/', 'ProductController@home');
 
-Route::post('add/{$product}', 'WishlistController@store');
+Route::post('/add/{$product}', 'WishlistController@store');
 
 /*Route::get('profile', function () {
     

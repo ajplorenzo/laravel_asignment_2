@@ -17,11 +17,4 @@ class ProductController extends Controller
 
     	return view('products.index', compact('products'));
     }
-
-    public function index()
-    {
-    	$products = Product::all()->sortBy("price");
-
-    	return view('products.products', compact('products'));
-    }
 }
