@@ -12,10 +12,11 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="/css/product.css" rel="stylesheet">
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-default navbar-static-top">
+        <nav class="navbar navbar-default navbar-static-top" style="background-color: #292b2c">
             <div class="container">
                 <div class="navbar-header bg-inverse">
 
@@ -28,7 +29,7 @@
                     </button>
 
                     <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">
+                    <a class="navbar-brand" href="{{ url('/') }}" style="color: #fff">
                         Inventory Crawler
                     </a>
                 </div>
@@ -43,8 +44,8 @@
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
                         @guest
-                            <li><a href="{{ route('login') }}" class="text-white">Login</a></li>
-                            <li><a href="{{ route('register') }}" class="text-white">Register</a></li>
+                            <li><a href="{{ route('login') }}" class="text-white" style="color: #fff">Login</a></li>
+                            <li><a href="{{ route('register') }}" class="text-white" style="color: #fff">Register</a></li>
                         @else
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
