@@ -17,7 +17,7 @@
             </div>
         </div>
         <div class="col-md-8 col-md-offset-2" style="text-align: center;">
-            <a href="/index" class="btn btn-primary">See Products</a>
+            <a href="/" class="btn btn-primary">See Products</a>
         </div>
     </div>
 </div>

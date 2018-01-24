@@ -15,9 +15,9 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/', 'ProductController@home');
+Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
-Route::get('/index', 'ProductController@index');
+Route::get('/', 'ProductController@home');
 
 Route::post('add/{$product}', 'WishlistController@store');
 

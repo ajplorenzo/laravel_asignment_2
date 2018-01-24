@@ -26,9 +26,12 @@
               <p style="text-align: right; color: red; font-size: 3rem; ">
                 €{{$product->price}}
               </p>
-              <form method="POST" action="/add/{{$product->id}}">
+              @if(auth()->check())
+              <form method="POST" action="add/{{$product->id}}">
+                {{ csrf_field() }}
                 <button type="submit" class="btn btn-success" style="width: 100%;">Add to your wishlist</button>
               </form>
+              @endif
           </div>
           @endforeach
         </div>

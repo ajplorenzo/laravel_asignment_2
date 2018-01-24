@@ -13,7 +13,7 @@ class WishlistController extends Controller
 
     public function store(Product $product)
 	{
-		dd(request());
+		dd($product);
 
 		Whishlist::create([
 			'user_id' => auth()->user()->id,
