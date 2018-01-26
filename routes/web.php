@@ -23,4 +23,4 @@ Route::post('/wishlist/add', 'WishlistController@store');
 
 Route::get('/wishlist', 'WishlistController@index');
 
-Route::delete('/wishlist/delete/{$id)', 'WishlistController@delete');
+Route::get('/wishlist/delete', 'WishlistController@delete');
