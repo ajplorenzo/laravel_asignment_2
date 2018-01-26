@@ -5,7 +5,7 @@
       <div class="container">
         <div class="row">
 
-          @foreach ($wishlist as $product => $product_id)
+          @foreach ($products as $product)
           <div class="card">
               <p class="card-text">{{$product->name}}</p>
               <ul>
@@ -17,10 +17,10 @@
                 €{{$product->price}}
               </p>
               @if(auth()->check())
-                <form name="delete_from_wishlist" method="DELETE" action="/wishlist/delete/{{ $product->id }}">
+                <form name="delete_from_wishlist" method="DELETE" action="/wishlist/delete">
                   {{ csrf_field() }}
                   <input type="hidden" name="product_id" value="{{$product->id}}" />
-                  <button type="submit" class="btn btn-danger" style="width: 100%;">Borrar</button>
+                  <button type="submit" class="btn btn-danger" style="width: 100%;">Delete</button>
                 </form>
               @endif
           </div>

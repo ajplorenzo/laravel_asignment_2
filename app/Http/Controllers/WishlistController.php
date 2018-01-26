@@ -31,7 +31,7 @@ class WishlistController extends Controller
 		]);	
 		
 		$wishlist = WishlistProduct::where('user_id', '=', $user->id);
-dd($wishlist);
+		dd($wishlist);
 		return view('products.wishlist', compact('wishlist'));
 	}
 
@@ -39,7 +39,15 @@ dd($wishlist);
 	{
 		$user = auth()->user();
 		$wishlist = WishlistProduct::where('user_id', '=', $user->id)->get();
-		return view('products.wishlist', compact('wishlist'));
+		$products = array();
+
+		foreach ($wishlist as $key => $value) {
+			$product = new Product;
+			$product = json_decode($value['product_id']);
+			$products[] = $product;
+		}
+
+		return view('products.wishlist', compact('products'));
 	}
 
 	public function delete($id) 
