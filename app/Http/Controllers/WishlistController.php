@@ -43,7 +43,7 @@ class WishlistController extends Controller
 
 		foreach ($wishlist as $key => $value) {
 			$product = new Product;
-			$product = json_decode($value['product_id']);
+			$product = json_decode($value['product_id'], true);
 			$products[] = $product;
 		}
 
