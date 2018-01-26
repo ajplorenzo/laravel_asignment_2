@@ -6,8 +6,8 @@
         <div class="row">
 
           @foreach ($products as $product)
+          @if(!is_null($product['name']))
           <div class="card">
-            @if(!is_null($product['name']))
               <p class="card-text">{{$product['name']}}</p>
               <ul>
                 <li>{{$product['colour']}}</li>
@@ -24,8 +24,8 @@
                   <button type="submit" class="btn btn-danger" style="width: 100%;">Delete</button>
                 </form>
               @endif
-            @endif
           </div>
+          @endif
           @endforeach
         </div>
       </div>
